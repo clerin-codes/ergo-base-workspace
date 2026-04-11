@@ -11,6 +11,7 @@ const navItems = [
     children: [
       { label: "Pro Station (Home & Office)", href: "/pro-station" },
       { label: "Corporate Solutions", href: "/corporate" },
+      { label: "Shop All", href: "/products" },
       { label: "Accessories & Add-Ons", href: "/accessories" },
       { label: "Customization Studio", href: "/customizer" },
     ],
