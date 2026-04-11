@@ -23,6 +23,7 @@ import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AccessoriesRouteImport } from './routes/accessories'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PainReliefTypeRouteImport } from './routes/pain-relief.$type'
 
 const WarrantyRoute = WarrantyRouteImport.update({
   id: '/warranty',
@@ -94,6 +95,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PainReliefTypeRoute = PainReliefTypeRouteImport.update({
+  id: '/pain-relief/$type',
+  path: '/pain-relief/$type',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -110,6 +116,7 @@ export interface FileRoutesByFullPath {
   '/reviews': typeof ReviewsRoute
   '/the-science': typeof TheScienceRoute
   '/warranty': typeof WarrantyRoute
+  '/pain-relief/$type': typeof PainReliefTypeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -126,6 +133,7 @@ export interface FileRoutesByTo {
   '/reviews': typeof ReviewsRoute
   '/the-science': typeof TheScienceRoute
   '/warranty': typeof WarrantyRoute
+  '/pain-relief/$type': typeof PainReliefTypeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -143,6 +151,7 @@ export interface FileRoutesById {
   '/reviews': typeof ReviewsRoute
   '/the-science': typeof TheScienceRoute
   '/warranty': typeof WarrantyRoute
+  '/pain-relief/$type': typeof PainReliefTypeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -161,6 +170,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/the-science'
     | '/warranty'
+    | '/pain-relief/$type'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -177,6 +187,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/the-science'
     | '/warranty'
+    | '/pain-relief/$type'
   id:
     | '__root__'
     | '/'
@@ -193,6 +204,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/the-science'
     | '/warranty'
+    | '/pain-relief/$type'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -210,6 +222,7 @@ export interface RootRouteChildren {
   ReviewsRoute: typeof ReviewsRoute
   TheScienceRoute: typeof TheScienceRoute
   WarrantyRoute: typeof WarrantyRoute
+  PainReliefTypeRoute: typeof PainReliefTypeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -312,6 +325,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pain-relief/$type': {
+      id: '/pain-relief/$type'
+      path: '/pain-relief/$type'
+      fullPath: '/pain-relief/$type'
+      preLoaderRoute: typeof PainReliefTypeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -330,6 +350,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReviewsRoute: ReviewsRoute,
   TheScienceRoute: TheScienceRoute,
   WarrantyRoute: WarrantyRoute,
+  PainReliefTypeRoute: PainReliefTypeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
