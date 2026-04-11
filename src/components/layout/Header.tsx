@@ -82,12 +82,12 @@ export function Header() {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   {item.href ? (
-                    <Link
-                      to={item.href}
+                    <a
+                      href={item.href}
                       className="px-3 py-2 text-xs font-medium tracking-wider text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {item.label}
-                    </Link>
+                    </a>
                   ) : (
                     <button className="flex items-center gap-1 px-3 py-2 text-xs font-medium tracking-wider text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
                       {item.label}
