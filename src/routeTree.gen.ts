@@ -20,6 +20,7 @@ import { Route as CustomizerRouteImport } from './routes/customizer'
 import { Route as CorporateRouteImport } from './routes/corporate'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConsultRouteImport } from './routes/consult'
+import { Route as ChairsRouteImport } from './routes/chairs'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AccessoriesRouteImport } from './routes/accessories'
 import { Route as AboutRouteImport } from './routes/about'
@@ -81,6 +82,11 @@ const ConsultRoute = ConsultRouteImport.update({
   path: '/consult',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChairsRoute = ChairsRouteImport.update({
+  id: '/chairs',
+  path: '/chairs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
@@ -112,6 +118,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/accessories': typeof AccessoriesRoute
   '/blog': typeof BlogRoute
+  '/chairs': typeof ChairsRoute
   '/consult': typeof ConsultRoute
   '/contact': typeof ContactRoute
   '/corporate': typeof CorporateRoute
@@ -130,6 +137,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/accessories': typeof AccessoriesRoute
   '/blog': typeof BlogRoute
+  '/chairs': typeof ChairsRoute
   '/consult': typeof ConsultRoute
   '/contact': typeof ContactRoute
   '/corporate': typeof CorporateRoute
@@ -149,6 +157,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/accessories': typeof AccessoriesRoute
   '/blog': typeof BlogRoute
+  '/chairs': typeof ChairsRoute
   '/consult': typeof ConsultRoute
   '/contact': typeof ContactRoute
   '/corporate': typeof CorporateRoute
@@ -169,6 +178,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/accessories'
     | '/blog'
+    | '/chairs'
     | '/consult'
     | '/contact'
     | '/corporate'
@@ -187,6 +197,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/accessories'
     | '/blog'
+    | '/chairs'
     | '/consult'
     | '/contact'
     | '/corporate'
@@ -205,6 +216,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/accessories'
     | '/blog'
+    | '/chairs'
     | '/consult'
     | '/contact'
     | '/corporate'
@@ -224,6 +236,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AccessoriesRoute: typeof AccessoriesRoute
   BlogRoute: typeof BlogRoute
+  ChairsRoute: typeof ChairsRoute
   ConsultRoute: typeof ConsultRoute
   ContactRoute: typeof ContactRoute
   CorporateRoute: typeof CorporateRoute
@@ -317,6 +330,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConsultRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chairs': {
+      id: '/chairs'
+      path: '/chairs'
+      fullPath: '/chairs'
+      preLoaderRoute: typeof ChairsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog': {
       id: '/blog'
       path: '/blog'
@@ -360,6 +380,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AccessoriesRoute: AccessoriesRoute,
   BlogRoute: BlogRoute,
+  ChairsRoute: ChairsRoute,
   ConsultRoute: ConsultRoute,
   ContactRoute: ContactRoute,
   CorporateRoute: CorporateRoute,
