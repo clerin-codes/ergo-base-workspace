@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WarrantyRouteImport } from './routes/warranty'
 import { Route as TheScienceRouteImport } from './routes/the-science'
 import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as ProductsRouteImport } from './routes/products'
 import { Route as ProStationRouteImport } from './routes/pro-station'
 import { Route as ManualRouteImport } from './routes/manual'
 import { Route as FaqRouteImport } from './routes/faq'
@@ -38,6 +39,11 @@ const TheScienceRoute = TheScienceRouteImport.update({
 const ReviewsRoute = ReviewsRouteImport.update({
   id: '/reviews',
   path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProStationRoute = ProStationRouteImport.update({
@@ -113,6 +119,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/manual': typeof ManualRoute
   '/pro-station': typeof ProStationRoute
+  '/products': typeof ProductsRoute
   '/reviews': typeof ReviewsRoute
   '/the-science': typeof TheScienceRoute
   '/warranty': typeof WarrantyRoute
@@ -130,6 +137,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/manual': typeof ManualRoute
   '/pro-station': typeof ProStationRoute
+  '/products': typeof ProductsRoute
   '/reviews': typeof ReviewsRoute
   '/the-science': typeof TheScienceRoute
   '/warranty': typeof WarrantyRoute
@@ -148,6 +156,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/manual': typeof ManualRoute
   '/pro-station': typeof ProStationRoute
+  '/products': typeof ProductsRoute
   '/reviews': typeof ReviewsRoute
   '/the-science': typeof TheScienceRoute
   '/warranty': typeof WarrantyRoute
@@ -167,6 +176,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/manual'
     | '/pro-station'
+    | '/products'
     | '/reviews'
     | '/the-science'
     | '/warranty'
@@ -184,6 +194,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/manual'
     | '/pro-station'
+    | '/products'
     | '/reviews'
     | '/the-science'
     | '/warranty'
@@ -201,6 +212,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/manual'
     | '/pro-station'
+    | '/products'
     | '/reviews'
     | '/the-science'
     | '/warranty'
@@ -219,6 +231,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   ManualRoute: typeof ManualRoute
   ProStationRoute: typeof ProStationRoute
+  ProductsRoute: typeof ProductsRoute
   ReviewsRoute: typeof ReviewsRoute
   TheScienceRoute: typeof TheScienceRoute
   WarrantyRoute: typeof WarrantyRoute
@@ -246,6 +259,13 @@ declare module '@tanstack/react-router' {
       path: '/reviews'
       fullPath: '/reviews'
       preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pro-station': {
@@ -347,6 +367,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   ManualRoute: ManualRoute,
   ProStationRoute: ProStationRoute,
+  ProductsRoute: ProductsRoute,
   ReviewsRoute: ReviewsRoute,
   TheScienceRoute: TheScienceRoute,
   WarrantyRoute: WarrantyRoute,
