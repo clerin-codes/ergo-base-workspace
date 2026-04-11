@@ -64,9 +64,9 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.info.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
