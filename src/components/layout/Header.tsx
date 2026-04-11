@@ -98,14 +98,14 @@ export function Header() {
                   {item.children && openDropdown === item.label && (
                     <div className="absolute top-full left-0 w-56 bg-surface border border-border rounded-lg shadow-2xl py-2 animate-fade-in">
                       {item.children.map((child) => (
-                        <Link
+                        <a
                           key={child.label}
-                          to={child.href}
+                          href={child.href}
                           className="block px-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
                           onClick={() => setOpenDropdown(null)}
                         >
                           {child.label}
-                        </Link>
+                        </a>
                       ))}
                     </div>
                   )}
