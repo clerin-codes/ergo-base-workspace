@@ -63,7 +63,7 @@
   --card-foreground: oklch(1 0 0);
   --popover: oklch(0.185 0 0);
   --popover-foreground: oklch(1 0 0);
-  --primary: oklch(0.795 0.105 85);
+  --primary: oklch(0.9251 0.2315 125.11);
   --primary-foreground: oklch(0.145 0 0);
   --secondary: oklch(0.22 0 0);
   --secondary-foreground: oklch(0.85 0 0);
@@ -75,29 +75,29 @@
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.795 0.105 85);
-  --chart-1: oklch(0.795 0.105 85);
+  --ring: oklch(0.9251 0.2315 125.11); 
+  --chart-1: oklch(0.9251 0.2315 125.11);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: oklch(0.185 0 0);
   --sidebar-foreground: oklch(1 0 0);
-  --sidebar-primary: oklch(0.795 0.105 85);
+  --sidebar-primary: oklch(0.9251 0.2315 125.11);
   --sidebar-primary-foreground: oklch(0.145 0 0);
   --sidebar-accent: oklch(0.22 0 0);
   --sidebar-accent-foreground: oklch(1 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.795 0.105 85);
-  --gold: oklch(0.795 0.105 85);
+  --sidebar-ring:oklch(0.9251 0.2315 125.11);
+  --gold: oklch(0.9251 0.2315 125.11);
   --gold-foreground: oklch(0.145 0 0);
   --silver: oklch(0.8 0 0);
   --surface: oklch(0.185 0 0);
   --surface-foreground: oklch(1 0 0);
   --whatsapp: oklch(0.62 0.17 155);
   --whatsapp-foreground: oklch(1 0 0);
-  --font-heading: 'Inter', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-heading: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
 }
 
 @layer base {
@@ -113,7 +113,12 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
   }
 }
@@ -130,8 +135,12 @@
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slide-in-right {
@@ -146,11 +155,12 @@
 }
 
 @keyframes pulse-gold {
-  0%, 100% {
-    box-shadow: 0 0 0 0 oklch(0.795 0.105 85 / 40%);
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.7 0.25 140 / 40%);
   }
   50% {
-    box-shadow: 0 0 20px 5px oklch(0.795 0.105 85 / 20%);
+    box-shadow: 0 0 20px 5px oklch(0.7 0.25 140 / 20%);
   }
 }
 

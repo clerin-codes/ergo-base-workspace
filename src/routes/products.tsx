@@ -2,7 +2,15 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, SlidersHorizontal, Star, ShieldCheck, Truck, X, ShoppingCart } from "lucide-react";
+import {
+  ArrowRight,
+  SlidersHorizontal,
+  Star,
+  ShieldCheck,
+  Truck,
+  X,
+  ShoppingCart,
+} from "lucide-react";
 import { useCart } from "@/hooks/use-cart";
 import productListingHero from "@/assets/product-listing-hero.jpg";
 import deskMahogany from "@/assets/desk-mahogany.jpg";
@@ -18,9 +26,17 @@ export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
       { title: "Shop All — Ergo Base Pro Station Standing Desks" },
-      { name: "description", content: "Browse the full Ergo Base collection: Pro Station standing desks in Mahogany, Teak & MDF, plus ergonomic accessories. All desks LKR 138,500 — any size, any wood." },
+      {
+        name: "description",
+        content:
+          "Browse the full Ergo Base collection: Pro Station standing desks in Mahogany, Teak & MDF, plus ergonomic accessories. All desks LKR 138,500 — any size, any wood.",
+      },
       { property: "og:title", content: "Shop All — Ergo Base Pro Station" },
-      { property: "og:description", content: "Browse Pro Station standing desks and ergonomic accessories. Custom sizes, premium woods, same price." },
+      {
+        property: "og:description",
+        content:
+          "Browse Pro Station standing desks and ergonomic accessories. Custom sizes, premium woods, same price.",
+      },
     ],
   }),
   component: ProductsPage,
@@ -157,12 +173,15 @@ function ProductsPage() {
   const { addItem } = useCart();
   const navigate = useNavigate();
 
-  const filtered = activeCategory === "all"
-    ? products
-    : products.filter((p) => p.category === activeCategory);
+  const filtered =
+    activeCategory === "all"
+      ? products
+      : products.filter((p) => p.category === activeCategory);
 
   const deskCount = products.filter((p) => p.category === "desks").length;
-  const accessoryCount = products.filter((p) => p.category === "accessories").length;
+  const accessoryCount = products.filter(
+    (p) => p.category === "accessories",
+  ).length;
 
   return (
     <div className="min-h-screen bg-background">
@@ -181,7 +200,8 @@ function ProductsPage() {
             SHOP ALL
           </h1>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            Pro Station standing desks and ergonomic accessories — everything you need for the perfect workspace.
+            Pro Station standing desks and ergonomic accessories — everything
+            you need for the perfect workspace.
           </p>
         </div>
       </section>
@@ -196,7 +216,8 @@ function ProductsPage() {
             <ShieldCheck className="w-4 h-4 text-gold" /> 5-YEAR WARRANTY
           </span>
           <span className="flex items-center gap-2">
-            <Star className="w-4 h-4 text-gold fill-gold" /> 4.9/5 CUSTOMER RATING
+            <Star className="w-4 h-4 text-gold fill-gold" /> 4.9/5 CUSTOMER
+            RATING
           </span>
         </div>
       </div>
@@ -238,12 +259,18 @@ function ProductsPage() {
             </button>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">{filtered.length} products</span>
+            <span className="text-sm text-muted-foreground">
+              {filtered.length} products
+            </span>
             <button
               onClick={() => setShowFilters(!showFilters)}
               className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-foreground border border-border rounded-lg transition-colors cursor-pointer"
             >
-              {showFilters ? <X className="w-4 h-4" /> : <SlidersHorizontal className="w-4 h-4" />}
+              {showFilters ? (
+                <X className="w-4 h-4" />
+              ) : (
+                <SlidersHorizontal className="w-4 h-4" />
+              )}
               {showFilters ? "CLOSE" : "FILTERS"}
             </button>
           </div>
@@ -254,33 +281,61 @@ function ProductsPage() {
           <div className="bg-surface border border-border rounded-xl p-6 mb-8 animate-fade-in">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div>
-                <p className="text-xs tracking-wider text-gold font-semibold mb-3">WOOD TYPE</p>
+                <p className="text-xs tracking-wider text-gold font-semibold mb-3">
+                  WOOD TYPE
+                </p>
                 <div className="space-y-2">
                   {["MDF White", "Mahogany", "Teak"].map((wood) => (
-                    <label key={wood} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground cursor-pointer">
-                      <input type="checkbox" className="accent-[hsl(var(--gold))]" />
+                    <label
+                      key={wood}
+                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        className="accent-[hsl(var(--gold))]"
+                      />
                       {wood}
                     </label>
                   ))}
                 </div>
               </div>
               <div>
-                <p className="text-xs tracking-wider text-gold font-semibold mb-3">FRAME COLOR</p>
+                <p className="text-xs tracking-wider text-gold font-semibold mb-3">
+                  FRAME COLOR
+                </p>
                 <div className="space-y-2">
                   {["Black", "Silver", "White"].map((color) => (
-                    <label key={color} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground cursor-pointer">
-                      <input type="checkbox" className="accent-[hsl(var(--gold))]" />
+                    <label
+                      key={color}
+                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        className="accent-[hsl(var(--gold))]"
+                      />
                       {color}
                     </label>
                   ))}
                 </div>
               </div>
               <div>
-                <p className="text-xs tracking-wider text-gold font-semibold mb-3">PRICE RANGE</p>
+                <p className="text-xs tracking-wider text-gold font-semibold mb-3">
+                  PRICE RANGE
+                </p>
                 <div className="space-y-2">
-                  {["Under LKR 15,000", "LKR 15,000 – 50,000", "LKR 100,000+"].map((range) => (
-                    <label key={range} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground cursor-pointer">
-                      <input type="checkbox" className="accent-[hsl(var(--gold))]" />
+                  {[
+                    "Under LKR 15,000",
+                    "LKR 15,000 – 50,000",
+                    "LKR 100,000+",
+                  ].map((range) => (
+                    <label
+                      key={range}
+                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        className="accent-[hsl(var(--gold))]"
+                      />
                       {range}
                     </label>
                   ))}
@@ -326,37 +381,69 @@ function ProductsPage() {
                       }`}
                     />
                   ))}
-                  <span className="text-xs text-muted-foreground ml-1">({product.reviews})</span>
+                  <span className="text-xs text-muted-foreground ml-1">
+                    ({product.reviews})
+                  </span>
                 </div>
-                <h3 className="text-sm font-semibold text-foreground">{product.name}</h3>
-                <p className="text-xs text-muted-foreground mt-0.5">{product.subtitle}</p>
+                <h3 className="text-sm font-semibold text-foreground">
+                  {product.name}
+                </h3>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  {product.subtitle}
+                </p>
                 {product.specs && (
                   <div className="flex flex-wrap gap-1.5 mt-3">
                     {product.specs.map((spec) => (
-                      <span key={spec} className="text-[10px] tracking-wider text-muted-foreground bg-background px-2 py-0.5 rounded">
+                      <span
+                        key={spec}
+                        className="text-[10px] tracking-wider text-muted-foreground bg-background px-2 py-0.5 rounded"
+                      >
                         {spec}
                       </span>
                     ))}
                   </div>
                 )}
-                <p className="text-lg font-bold text-gold mt-3">{product.price}</p>
+                <p className="text-lg font-bold text-gold mt-3">
+                  {product.price}
+                </p>
                 <div className="flex gap-2 mt-3">
                   <Button
                     variant="gold"
                     size="sm"
                     className="flex-1"
                     onClick={() => {
-                      addItem({ id: product.id, name: product.name, subtitle: product.subtitle, price: product.priceValue, image: product.image }, false);
-                      navigate({ to: "/checkout" });
+                      if (product.category === "desks") {
+                        navigate({ to: `/product/${product.id}` });
+                      } else {
+                        addItem(
+                          {
+                            id: product.id,
+                            name: product.name,
+                            subtitle: product.subtitle,
+                            price: product.priceValue,
+                            image: product.image,
+                          },
+                          false,
+                        );
+                        navigate({ to: "/checkout" });
+                      }
                     }}
                   >
-                    BUY NOW
+                    {product.category === "desks" ? "VIEW DETAILS" : "BUY NOW"}
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
                     className="flex-1"
-                    onClick={() => addItem({ id: product.id, name: product.name, subtitle: product.subtitle, price: product.priceValue, image: product.image })}
+                    onClick={() =>
+                      addItem({
+                        id: product.id,
+                        name: product.name,
+                        subtitle: product.subtitle,
+                        price: product.priceValue,
+                        image: product.image,
+                      })
+                    }
                   >
                     <ShoppingCart className="w-3.5 h-3.5 mr-1" /> ADD
                   </Button>
@@ -368,10 +455,15 @@ function ProductsPage() {
 
         {/* Custom CTA */}
         <div className="mt-16 bg-surface border border-gold/20 rounded-xl p-8 sm:p-12 text-center">
-          <h2 className="text-xs tracking-[0.3em] text-gold font-semibold mb-3">CAN'T FIND WHAT YOU NEED?</h2>
-          <p className="text-2xl sm:text-3xl font-bold text-foreground mb-3">Design Your Own Pro Station</p>
+          <h2 className="text-xs tracking-[0.3em] text-gold font-semibold mb-3">
+            CAN'T FIND WHAT YOU NEED?
+          </h2>
+          <p className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
+            Design Your Own Pro Station
+          </p>
           <p className="text-muted-foreground max-w-lg mx-auto mb-8">
-            Any size. Any wood. Any color. Same price — LKR 138,500. Use our Customization Studio to build exactly what you need.
+            Any size. Any wood. Any color. Same price — LKR 138,500. Use our
+            Customization Studio to build exactly what you need.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button variant="gold" size="lg" asChild>
@@ -388,8 +480,12 @@ function ProductsPage() {
         {/* Corporate */}
         <div className="mt-8 bg-background border border-border rounded-xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="text-xl font-bold text-foreground mb-2">Need Multiple Desks?</h3>
-            <p className="text-muted-foreground">Bulk pricing and installation support for offices of any size.</p>
+            <h3 className="text-xl font-bold text-foreground mb-2">
+              Need Multiple Desks?
+            </h3>
+            <p className="text-muted-foreground">
+              Bulk pricing and installation support for offices of any size.
+            </p>
           </div>
           <Button variant="goldOutline" size="lg" asChild>
             <Link to="/corporate">GET CORPORATE QUOTE</Link>
