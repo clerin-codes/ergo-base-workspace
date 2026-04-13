@@ -1,32 +1,42 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShoppingCart } from "lucide-react";
+import { useCart } from "@/hooks/use-cart";
 import deskMahogany from "@/assets/desk-mahogany.jpg";
 import deskWhite from "@/assets/desk-white.jpg";
 import deskTeak from "@/assets/desk-teak.jpg";
 
 const products = [
   {
+    id: "pro-mahogany",
     name: "Pro Station — Mahogany Top",
     frame: "Standard Black Frame",
     price: "LKR 138,500",
+    priceValue: 138500,
     image: deskMahogany,
   },
   {
+    id: "pro-mdf-white",
     name: "Pro Station — MDF White Top",
     frame: "Silver Frame",
     price: "LKR 138,500",
+    priceValue: 138500,
     image: deskWhite,
   },
   {
+    id: "pro-teak",
     name: "Pro Station — Teak Top",
     frame: "Custom Size Available",
     price: "LKR 138,500",
+    priceValue: 138500,
     image: deskTeak,
   },
 ];
 
 export function ProductCards() {
+  const { addItem } = useCart();
+  const navigate = useNavigate();
+
   return (
     <section className="py-24 bg-surface">
       <div className="max-w-7xl mx-auto px-4">
@@ -55,9 +65,25 @@ export function ProductCards() {
                 <h3 className="text-lg font-semibold text-foreground">{product.name}</h3>
                 <p className="text-sm text-muted-foreground mt-1">{product.frame}</p>
                 <p className="text-xl font-bold text-gold mt-3">{product.price}</p>
-                <Button variant="gold" className="w-full mt-4" asChild>
-                  <Link to="/pro-station">INQUIRE NOW</Link>
-                </Button>
+                <div className="flex gap-2 mt-4">
+                  <Button
+                    variant="gold"
+                    className="flex-1"
+                    onClick={() => {
+                      addItem({ id: product.id, name: product.name, subtitle: product.frame, price: product.priceValue, image: product.image });
+                      navigate({ to: "/checkout" });
+                    }}
+                  >
+                    BUY NOW
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="flex-1"
+                    onClick={() => addItem({ id: product.id, name: product.name, subtitle: product.frame, price: product.priceValue, image: product.image })}
+                  >
+                    <ShoppingCart className="w-4 h-4 mr-1" /> ADD
+                  </Button>
+                </div>
               </div>
             </div>
           ))}
